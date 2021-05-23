@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-python-service
+  name: ex1-service
 spec:
   selector:
-    app: hello-python
+    app: ex1
   ports:
   - protocol: "TCP"
     port: 6000
@@ -16,17 +16,17 @@ spec:
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: hello-python
+  name: ex1
 spec:
   replicas: 4
   template:
     metadata:
       labels:
-        app: hello-python
+        app: ex1
     spec:
       containers:
-      - name: hello-python
-        image: hello-python:latest
+      - name: ex1
+        image: ex1:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
