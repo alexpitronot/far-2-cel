@@ -4,11 +4,7 @@ APP = Flask(__name__)
 
 @APP.route('/')
 def hello_world():
-<<<<<<< HEAD
-    return 'Our first Kubernetes app new'
-=======
-    return 'Our first Kubernetes app'
->>>>>>> c1ae04e3fe496ec05d7c602affb68e83401e1154
+    return 'Our first Kubernetes app NEW NEW NEW'
 
 
 
