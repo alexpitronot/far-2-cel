@@ -1,12 +1,24 @@
 from flask import Flask
+from flask import request
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return "Congratulations, it's a web app!"
+    celsius = request.args.get("celsius", "")
+    if celsius:
+        fahrenheit = fahrenheit_from(celsius)
+    else:
+        fahrenheit = ""
+    return (
+        """<form action="" method="get">
+                Celsius temperature: <input type="text" name="celsius">
+                <input type="submit" value="Convert to Fahrenheit">
+            </form>"""
+        + "Fahrenheit: "
+        + fahrenheit
+    )
 
-@app.route("/")
 def fahrenheit_from(celsius):
     """Convert Celsius to Fahrenheit degrees."""
     try:
