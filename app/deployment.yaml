@@ -11,12 +11,16 @@ spec:
     targetPort: 8080
   type: LoadBalancer
 
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: exercise1
 spec:
-  replicas: 3
+  selector:
+    matchLabels:
+      app: exercise1
+  replicas: 4
   template:
     metadata:
       labels:
