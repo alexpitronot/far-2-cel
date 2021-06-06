@@ -29,6 +29,6 @@ spec:
       containers:
       - name: exercise1
         image: exercise1:latest
-        
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
