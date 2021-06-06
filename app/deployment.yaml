@@ -7,7 +7,7 @@ spec:
     app: exercise1
   ports:
   - protocol: "TCP"
-    port: 6000
+    port: 80
     targetPort: 8080
   type: LoadBalancer
 
