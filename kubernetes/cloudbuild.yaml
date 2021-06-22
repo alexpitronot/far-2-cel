@@ -110,7 +110,7 @@ spec:
         app: far-2-cel
     spec:
       containers:
-      - image: gcr.io/far-2-cel/far-2-cel:821a739
+      - image: gcr.io/far-2-cel/far-2-cel:$SHORT_SHA
         imagePullPolicy: Always
         name: far-2-cel-1
         resources: {}
