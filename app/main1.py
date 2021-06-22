@@ -17,8 +17,8 @@ def index():
                 <input type="submit" value="Convert to Fahrenheit">
             </div>
             </form>"""
-        + """<div style="background-color: red;color: white; font-size: 2.6em; display: unset; padding: 5px;">Fahrenheit:</div> """
-        + fahrenheit
+        + """<div style="background-color: red;color: white; font-size: 2.6em; display: unset; padding: 5px;">Fahrenheit: """
+        + fahrenheit + "</div>"
     )
 
 def fahrenheit_from(celsius):
