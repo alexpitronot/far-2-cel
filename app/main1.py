@@ -12,12 +12,12 @@ def index():
         fahrenheit = ""
     return (
         """<form action="" method="get">
-                <div style="background-color: yellow; display: unset; color: purple; font-size: 2.6em">
+                <div style="background-color: yellow;color: purple; font-size: 2.6em; display: unset; padding: 5px;">
                 Celsius temperature: <input type="text" name="celsius" value=""" + celsius + """>
                 <input type="submit" value="Convert to Fahrenheit">
             </div>
             </form>"""
-        + "Fahrenheit: "
+        + """<div style="background-color: red;color: white; font-size: 2.6em; display: unset; padding: 5px;">Fahrenheit:</div> """
         + fahrenheit
     )
 
