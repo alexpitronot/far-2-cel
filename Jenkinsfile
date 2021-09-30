@@ -63,9 +63,9 @@ pipeline {
                 sh "docker rmi $registry:$BUILD_NUMBER" 
 
             }
-34
+
         } 
-35
+
     }
-36
+
 }
