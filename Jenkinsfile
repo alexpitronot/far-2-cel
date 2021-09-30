@@ -2,7 +2,7 @@ pipeline {
 
     environment { 
 
-        registry = "YourDockerhubAccount/YourRepository" 
+        registry = "agorbach/far-2-cel" 
 
         registryCredential = 'dockerhub_id' 
 
@@ -18,7 +18,7 @@ pipeline {
 
             steps { 
 
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/alexpitronot/far-2-cel.git' 
 
             }
 
