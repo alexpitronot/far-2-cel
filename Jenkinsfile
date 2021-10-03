@@ -7,13 +7,13 @@ pipeline {
     stages {
         stage('Build Application') { 
             steps {
-                echo '=== Building Petclinic Application ==='
+                echo '=== Building Far-2-cel Application ==='
                 sh 'mvn -B -DskipTests clean package' 
             }
         }
         stage('Test Application') {
             steps {
-                echo '=== Testing Petclinic Application ==='
+                echo '=== Testing Far-2-cel Application ==='
                 sh 'mvn test'
             }
             post {
