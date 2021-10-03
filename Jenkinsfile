@@ -1,71 +1,60 @@
-pipeline { 
 
-    environment { 
-
-        registry = "agorbach/far-2-cel" 
-
-        registryCredential = 'dockerhub_id' 
-
-        dockerImage = '' 
-
-    }
-
-    agent any 
-
-    stages { 
-
-        stage('Cloning our Git') { 
-
-            steps { 
-
-                git 'https://github.com/alexpitronot/far-2-cel.git' 
-
+pipeline {
+    agent any
+       triggers {
+        pollSCM "* * * * *"
+       }
+    stages {
+        stage('Build Application') { 
+            steps {
+                echo '=== Building Petclinic Application ==='
+                sh 'mvn -B -DskipTests clean package' 
             }
-
-        } 
-
-        stage('Building our image') { 
-
-            steps { 
-
-                script { 
-
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-
-                }
-
-            } 
-
         }
-
-        stage('Deploy our image') { 
-
-            steps { 
-
-                script { 
-
-                    docker.withRegistry( '', registryCredential ) { 
-
-                        dockerImage.push() 
-
+        stage('Test Application') {
+            steps {
+                echo '=== Testing Petclinic Application ==='
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Build Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo '=== Building Petclinic Docker Image ==='
+                script {
+                    app = docker.build("ibuchh/petclinic-spinnaker-jenkins")
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                echo '=== Pushing Petclinic Docker Image ==='
+                script {
+                    GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+                    SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerHubCredentials') {
+                        app.push("$SHORT_COMMIT")
+                        app.push("latest")
                     }
-
-                } 
-
+                }
             }
-
-        } 
-
-        stage('Cleaning up') { 
-
-            steps { 
-
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-
+        }
+        stage('Remove local images') {
+            steps {
+                echo '=== Delete the local docker images ==='
+                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
+                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
             }
-
-        } 
-
+        }
     }
-
 }
