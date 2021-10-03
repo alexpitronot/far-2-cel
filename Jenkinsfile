@@ -27,9 +27,9 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo '=== Building Petclinic Docker Image ==='
+                echo '=== Building Far-2-cel Docker Image ==='
                 script {
-                    app = docker.build("ibuchh/petclinic-spinnaker-jenkins")
+                    app = docker.build("agorbach/far-2-cel")
                 }
             }
         }
@@ -38,7 +38,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                echo '=== Pushing Petclinic Docker Image ==='
+                echo '=== Pushing Far-2-cel Docker Image ==='
                 script {
                     GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
                     SHORT_COMMIT = "${GIT_COMMIT_HASH[0..7]}"
