@@ -4,7 +4,7 @@ pipeline {
        triggers {
         pollSCM "* * * * *"
        }
-    
+        stages {
         stage('Build Docker Image') {
             when {
                 branch 'master'
