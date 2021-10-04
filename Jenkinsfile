@@ -3,10 +3,7 @@ pipeline {
     agent any       
     stages {
         stage('Build Docker Image') {
-            when {
-                branch 'master'
-            }
-            steps {
+           steps {
                 echo '=== Building Far-2-cel Docker Image ==='
                 script {
                     app = docker.build("agorbach/far-2-cel")
@@ -14,9 +11,6 @@ pipeline {
             }
         }
         stage('Push Docker Image') {
-            when {
-                branch 'master'
-            }
             steps {
                 echo '=== Pushing Far-2-cel Docker Image ==='
                 script {
