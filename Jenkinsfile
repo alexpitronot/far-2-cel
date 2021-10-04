@@ -4,24 +4,7 @@ pipeline {
        triggers {
         pollSCM "* * * * *"
        }
-    stages {
-        stage('Build Application') { 
-            steps {
-                echo '=== Building Far-2-cel Application ==='
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-        stage('Test Application') {
-            steps {
-                echo '=== Testing Far-2-cel Application ==='
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+    
         stage('Build Docker Image') {
             when {
                 branch 'master'
