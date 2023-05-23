@@ -18,7 +18,7 @@ pipeline {
 
             steps { 
 
-                git 'https://github.com/alexpitronot/far-2-cel' 
+                git 'https://github.com/alexpitronot/far-2-cel.git' 
 
             }
 
