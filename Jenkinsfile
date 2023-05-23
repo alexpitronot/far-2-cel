@@ -56,7 +56,7 @@ pipeline {
 
         } 
 
-        stage('Cleaning up') { 
+        stage('Cleaning up all') { 
 
             steps { 
 
