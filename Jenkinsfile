@@ -30,7 +30,8 @@ pipeline {
                     // Perform actions within the directory
                     // For example, run shell commands or execute build steps
                     sh 'echo "Performing actions within Test FAR-2-CEL directory"'
-                    sh 'ls'
+                    sh 'ls -l'
+                    sh 'pwd'
                     // ...
                 }
             }       
