@@ -29,7 +29,7 @@ pipeline {
             steps { 
 
                 script { 
-                    sh 'cd "Test FAR-2-CEL"'
+                    dir('Test FAR-2-CEL')
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 
                 }
