@@ -23,8 +23,7 @@ pipeline {
             }
 
         } 
-       
-       stages {
+              
         stage('Change Directory') {
             steps {
                 dir('Test FAR-2-CEL') {
@@ -34,9 +33,8 @@ pipeline {
                     sh 'ls'
                     // ...
                 }
-            }
-        }
-        
+            }       
+
         stage('Building our image') { 
 
             steps { 
