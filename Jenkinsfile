@@ -30,7 +30,7 @@ pipeline {
 
                 script { 
 
-                    dockerImage = docker.build("agorbach/far-2-cel:latest") 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 
                 }
 
