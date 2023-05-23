@@ -24,12 +24,24 @@ pipeline {
 
         } 
        
+       stages {
+        stage('Change Directory') {
+            steps {
+                dir('Test FAR-2-CEL') {
+                    // Perform actions within the directory
+                    // For example, run shell commands or execute build steps
+                    sh 'echo "Performing actions within Test FAR-2-CEL directory"'
+                    sh 'ls'
+                    // ...
+                }
+            }
+        }
+        
         stage('Building our image') { 
 
             steps { 
 
-                script { 
-                    dir('Test FAR-2-CEL')
+                script {                     
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 
                 }
