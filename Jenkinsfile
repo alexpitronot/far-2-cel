@@ -24,7 +24,7 @@ pipeline {
 
         } 
 
-        stage('Building our image new') { 
+        stage('Building our image') { 
 
             steps { 
 
