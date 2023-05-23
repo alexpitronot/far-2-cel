@@ -24,6 +24,16 @@ pipeline {
 
         } 
 
+        stage('Print pwd') { 
+
+            steps { 
+
+                pwd 
+
+            }
+
+        }
+
         stage('Building our image') { 
 
             steps { 
