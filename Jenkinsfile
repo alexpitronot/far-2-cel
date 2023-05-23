@@ -29,8 +29,8 @@ pipeline {
             steps { 
 
                 script { 
-
-                    dockerImage = "far-2-cel/" + docker.build registry + ":$BUILD_NUMBER" 
+                    sh 'cd "Test FAR-2-CEL"'
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 
                 }
 
