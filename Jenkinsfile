@@ -26,7 +26,7 @@ pipeline {
               
         stage('Change Directory') {
             steps {
-                dir('app') {
+                dir('Test FAR-2-CEL@tmp') {
                     // Perform actions within the directory
                     // For example, run shell commands or execute build steps
                     sh 'echo "Performing actions within Test FAR-2-CEL directory"'
@@ -36,6 +36,15 @@ pipeline {
                 }
             }       
         }
+
+        stage('Copy') {
+            steps {                
+                    sh 'git clone https://github.com/alexpitronot/far-2-cel.git'
+                    sh 'pwd'                 
+                
+            }       
+        }
+
         stage('Building our image') { 
 
             steps { 
